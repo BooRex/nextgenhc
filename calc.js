@@ -2,13 +2,10 @@ export const calc = (input) => {
     const intersectionStreetsMap = {}
 
     input.streets.forEach((street) => {
-        if (!intersectionStreetsMap[street.intersectionA])
-            intersectionStreetsMap[street.intersectionA] = []
-
-        intersectionStreetsMap[street.intersectionA].push(street.name)
-
         if (!intersectionStreetsMap[street.intersectionB])
             intersectionStreetsMap[street.intersectionB] = []
+
+        intersectionStreetsMap[street.intersectionB].push(street.name)
     })
 
     const schedules = [];
