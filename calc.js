@@ -24,12 +24,16 @@ export const calc = (input) => {
     Object.entries(intersectionStreetsMap).forEach(([id, streets]) => {
         const scheduleItems = []
 
+        const sum = Object.entries(streets).reduce((sum, [street, count]) => sum + count, 0)
+
         Object.entries(streets).forEach(([street, count]) => {
             if (count === 0) return
 
+            const val = (count / sum) * 10
+
             scheduleItems.push({
                 streetName: street,
-                duration: count > 5 ? 5 : count
+                duration: val > 0 ? (Math.floor(val) || 1) : 0
             })
         })
 
