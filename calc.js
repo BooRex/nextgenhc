@@ -20,6 +20,10 @@ export const calc = (input) => {
             })
         })
 
+        if (scheduleItems.length === 0) {
+            return
+        }
+
         schedules.push(
             {
                 intersectionId: id,
