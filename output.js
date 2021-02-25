@@ -3,7 +3,9 @@ import fs from 'fs';
 export const stringify = (object, customName) => {
   const filename = `./outputs/${ object.name }-output${ customName ? `-${ customName }` : '' }.txt`;
 
-  fs.unlinkSync(filename);
+  try {
+    fs.unlinkSync(filename);
+  } catch (_) {}
   let output = fs.createWriteStream(filename, {
     flags: 'a'
   });
@@ -15,7 +17,7 @@ export const stringify = (object, customName) => {
     schedule.scheduleItems.forEach((item, itemIdx) => {
       const isEnd = schIdx === object.schedules.length + 1 && itemIdx === schedule.scheduleItems.length + 1;
 
-      output.write(`${ item.streetName } ${item.duration}${isEnd ? '\n' : ''}`);
+      output.write(`${ item.streetName } ${item.duration}${isEnd ? '' : '\n'}`);
     })
   });
 };

@@ -11,8 +11,6 @@ export const calc = (input) => {
             intersectionStreetsMap[street.intersectionB] = []
     })
 
-    console.log(intersectionStreetsMap)
-
     const schedules = [];
 
     Object.entries(intersectionStreetsMap).forEach(([id, streets]) => {
@@ -20,7 +18,7 @@ export const calc = (input) => {
 
         streets.forEach(street => {
             scheduleItems.push({
-                streetName: street.name,
+                streetName: street,
                 duration: 1
             })
         })
@@ -35,6 +33,7 @@ export const calc = (input) => {
     })
 
     return {
+        name: input.name,
         scheduleCount: schedules.length,
         schedules
     }
