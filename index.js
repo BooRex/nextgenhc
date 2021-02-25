@@ -3,6 +3,5 @@ import { stringify } from './output.js';
 import { calc } from './calc.js';
 
 const parsedArray = parse(['a']);
-console.log('---', parsedArray);
 calc();
-stringify();
+// stringify();
