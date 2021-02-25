@@ -17,7 +17,10 @@ export const calc = (input) => {
     input.cars.forEach(car => {
         car.streets.forEach(street => {
             const intersectionInfo = streetsIntersectionMap[street]
-            intersectionStreetsMap[intersectionInfo.b][street]++
+
+            if (intersectionInfo) {
+                intersectionStreetsMap[intersectionInfo.b][street]++
+            }
         })
     })
 
