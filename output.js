@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { getTime } from './input.js';
 
 export const stringify = (object, customName) => {
   const filename = `./outputs/${ object.name }-output${ customName ? `-${ customName }` : '' }.txt`;
@@ -20,4 +21,6 @@ export const stringify = (object, customName) => {
       output.write(`${ item.streetName } ${item.duration}${isEnd ? '' : '\n'}`);
     })
   });
+
+  console.log(`created ${ object.name }-output${ customName ? `-${ customName }` : '' }.txt`, getTime());
 };

@@ -1,7 +1,14 @@
 import fs from 'fs';
 
+export const getTime = () => {
+  const date = new Date();
+
+  return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}-${date.getMilliseconds()}`;;
+}
+
 const convert = name => {
   const raw = fs.readFileSync(`./files/${ name }.txt`).toString().split('\n');
+  console.log('file parsed', getTime());
   const infoArr = raw[0].split(' ');
 
   const duration = parseInt(infoArr[0]);
