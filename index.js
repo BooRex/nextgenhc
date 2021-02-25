@@ -2,6 +2,7 @@ import { parse } from './input.js';
 import { stringify } from './output.js';
 import { calc } from './calc.js';
 
-parse();
+const parsedArray = parse(['a']);
+console.log('---', parsedArray);
 calc();
 stringify();

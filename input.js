@@ -41,8 +41,8 @@ const convert = name => {
   return {
     name,
     duration, intersectionsCount, streetsCount, carsCount, bonusPoints,
-    streets: JSON.stringify(streetsArr),
-    cars: JSON.stringify(carsArr),
+    streets: streetsArr,
+    cars: carsArr,
   };
 }
 
