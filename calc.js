@@ -25,9 +25,11 @@ export const calc = (input) => {
         const scheduleItems = []
 
         Object.entries(streets).forEach(([street, count]) => {
+            if (count === 0) return
+
             scheduleItems.push({
                 streetName: street,
-                duration: count
+                duration: count > 5 ? 5 : count
             })
         })
 
