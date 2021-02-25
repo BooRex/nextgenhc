@@ -12,23 +12,6 @@ export const calc = (input) => {
         streetsIntersectionMap[street.name] = { a: street.intersectionA, b: street.intersectionB, time: street.time }
     })
 
-    input.cars.filter(car => {
-        const sum = car.streets.reduce((sum, name) => {
-            if (!streetsIntersectionMap[name]) {
-                console.log('Some fucking error')
-                return sum
-            }
-            return sum + streetsIntersectionMap[name].time;
-        }, 0)
-
-        if(sum >= input.duration) {
-            console.log(`Skipped item because way longer than duration (way: ${sum}, dur: ${input.duration})`)
-            return false
-        }
-
-        return true
-    })
-
     const schedules = [];
 
     input.cars.forEach(car => {
