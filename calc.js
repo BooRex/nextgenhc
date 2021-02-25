@@ -1,22 +1,33 @@
 export const calc = (input) => {
     const intersectionStreetsMap = {}
 
+    const streetsIntersectionMap = {}
+
     input.streets.forEach((street) => {
         if (!intersectionStreetsMap[street.intersectionB])
-            intersectionStreetsMap[street.intersectionB] = []
+            intersectionStreetsMap[street.intersectionB] = {}
 
-        intersectionStreetsMap[street.intersectionB].push(street.name)
+        intersectionStreetsMap[street.intersectionB][street.name] = 0
+
+        streetsIntersectionMap[street.name] = { a: street.intersectionA, b: street.intersectionB }
     })
 
     const schedules = [];
 
+    input.cars.forEach(car => {
+        car.streets.forEach(street => {
+            const intersectionInfo = streetsIntersectionMap[street]
+            intersectionStreetsMap[intersectionInfo.b][street]++
+        })
+    })
+
     Object.entries(intersectionStreetsMap).forEach(([id, streets]) => {
         const scheduleItems = []
 
-        streets.forEach(street => {
+        Object.entries(streets).forEach(([street, count]) => {
             scheduleItems.push({
                 streetName: street,
-                duration: 1
+                duration: count
             })
         })
 
